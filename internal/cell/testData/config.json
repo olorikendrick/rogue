@@ -1,0 +1,12 @@
+{
+    "id": "agent-1",
+    "priority": 5,
+    "commands": [],
+    "deps": [{
+        "name": "python",
+        "version": "1.0"
+    }, {
+        "name": "node",
+        "version": "1.0"
+    }]
+}
