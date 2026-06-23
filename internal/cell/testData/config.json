@@ -1,12 +1,14 @@
 {
-    "id": "agent-1",
-    "priority": 5,
-    "commands": [],
-    "deps": [{
-        "name": "python",
-        "version": "1.0"
-    }, {
-        "name": "node",
-        "version": "1.0"
-    }]
+  "id": "agent-1",
+  "priority": 1,
+  "commands": ["./run.sh"],
+  "network": true,
+  "timeout": 30,
+  "deps": [
+    { "name": "python", "version": "3.11" },
+    { "name": "ffmpeg", "version": "6.0" }
+  ],
+  "mounts": [
+    { "host": "/data", "container": "/mnt/data", "read_only": true }
+  ]
 }

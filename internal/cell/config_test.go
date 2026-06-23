@@ -2,34 +2,27 @@ package cell
 
 import (
 	"testing"
+
+	"github.com/olorikendrick/rogue/internal/testutil"
 )
 
 func TestLoadConfig(t *testing.T) {
 	config, err := LoadConfig("./testData/config.json")
-	if err != nil {
-		t.Fatalf("Failed to load Config %v", err)
-	}
+	testutil.AssertNoErr(t, err, "LoadConfig")
 
-	if config.ID != "agent-1" {
-		t.Fatalf("expected id : 'agent-1', got id: '%s'", config.ID)
-	}
-	if len(config.Deps) != 2 {
-		t.Fatalf("Expected 2 dependencies, got: %d dependencies", len(config.Deps))
-	}
-	if config.Deps[0].Name != "python" {
-		t.Fatalf("expected first dep 'python', got '%s'", config.Deps[0].Name)
-	}
-
+	testutil.AssertEq(t, config.ID, "agent-1")
+	testutil.AssertEq(t, len(config.Deps), 2,)
+	testutil.AssertEq(t, config.Deps[0].Name, "python")
 }
 
 func TestValidate(t *testing.T) {
 	config, err := LoadConfig("./testData/config.json")
-	if err != nil {
-		t.Fatalf("Failed to load Config %v", err)
-	}
+	testutil.AssertNoErr(t, err, "LoadConfig")
+
 	config.Timeout = 0
-	err = config.Validate()
-	if err == nil {
-		t.Fatalf("Expectes config validation to fail when config timeout <0")
-	}
+	testutil.AssertErr(t, config.Validate(), "Validate should fail when Timeout is 0")
+
+	config.Timeout = 30
+	config.ID = ""
+	testutil.AssertErr(t, config.Validate(), "Validate should fail when ID is empty")
 }

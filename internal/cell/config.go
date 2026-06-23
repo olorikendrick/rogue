@@ -32,6 +32,9 @@ func (c *Config) Validate() error {
 		return fmt.Errorf("Timeout must be greater than 0, got : %d", c.Timeout)
 
 	}
+	if c.ID == ""{
+		return fmt.Errorf("Config must have a valid non empty ID")
+	}
 	return nil
 }
 
