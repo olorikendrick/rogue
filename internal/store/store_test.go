@@ -27,7 +27,7 @@ func TestStoreHasDeps(t *testing.T) {
 		Path: "/tmp/test-store",
 		deps: make(map[string]Dep),
 	}
-	 _ = store.Add(deps)
+	_ = store.Add(deps)
 	has, _ := store.HasDeps(deps)
 
 	testutil.Assert(t, has, "Expected store to contain deps ")

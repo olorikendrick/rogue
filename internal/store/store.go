@@ -28,10 +28,10 @@ func (s *Store) HasDeps(deps []Dep) (bool, []Dep) {
 	}
 }
 
-func (s *Store)Add(deps []Dep) error{
-	for _,dep := range(deps){
+func (s *Store) Add(deps []Dep) error {
+	for _, dep := range deps {
 		key := dep.Key()
-		s.deps[key]=dep
+		s.deps[key] = dep
 	}
 	return nil
 }
