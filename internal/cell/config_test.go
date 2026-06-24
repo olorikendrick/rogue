@@ -11,7 +11,7 @@ func TestLoadConfig(t *testing.T) {
 	testutil.AssertNoErr(t, err, "LoadConfig")
 
 	testutil.AssertEq(t, config.ID, "agent-1")
-	testutil.AssertEq(t, len(config.Deps), 2,)
+	testutil.AssertEq(t, len(config.Deps), 2)
 	testutil.AssertEq(t, config.Deps[0].Name, "python")
 }
 

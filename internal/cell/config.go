@@ -3,6 +3,7 @@ package cell
 import (
 	"encoding/json"
 	"fmt"
+	"github.com/olorikendrick/rogue/internal/store"
 	"os"
 )
 
@@ -12,19 +13,14 @@ type Mount struct {
 	ReadOnly  bool   `json:"read_only"`
 }
 
-type Dep struct {
-	Name    string `json:"name"`
-	Version string `json:"version"`
-}
-
 type Config struct {
-	ID       string   `json:"id"`
-	Priority uint     `json:"priority"`
-	Commands []string `json:"commands"`
-	Network  bool     `json:"network"`
-	Timeout  int      `json:"timeout"`
-	Deps     []Dep    `json:"deps"`
-	Mounts   []Mount  `json:"mounts"`
+	ID       string      `json:"id"`
+	Priority uint        `json:"priority"`
+	Commands []string    `json:"commands"`
+	Network  bool        `json:"network"`
+	Timeout  int         `json:"timeout"`
+	Deps     []store.Dep `json:"deps"`
+	Mounts   []Mount     `json:"mounts"`
 }
 
 func (c *Config) Validate() error {
@@ -32,7 +28,7 @@ func (c *Config) Validate() error {
 		return fmt.Errorf("Timeout must be greater than 0, got : %d", c.Timeout)
 
 	}
-	if c.ID == ""{
+	if c.ID == "" {
 		return fmt.Errorf("Config must have a valid non empty ID")
 	}
 	return nil
