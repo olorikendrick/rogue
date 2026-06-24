@@ -5,6 +5,6 @@ import (
 	"github.com/olorikendrick/rogue/internal/store"
 )
 
-func main(){
-	fmt.Printf("Host %+v\n",store.GetHost())
+func main() {
+	fmt.Printf("Host %+v\n", store.GetHost())
 }

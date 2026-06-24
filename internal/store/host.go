@@ -6,7 +6,7 @@ import (
 
 type Host struct {
 	Architecture string `json:"architecture"`
-	WordSize    byte   `json:"WordSize"`
+	WordSize     byte   `json:"WordSize"`
 }
 
 func GetHost() Host {
@@ -20,6 +20,6 @@ func GetHost() Host {
 
 	return Host{
 		Architecture: arch,
-		WordSize:    byte(word),
+		WordSize:     byte(word),
 	}
 }
