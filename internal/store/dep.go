@@ -1,12 +1,15 @@
 package store
-
+import(
+	"fmt"
+)
 
 
 type Dep struct {
 	Name    string `json:"name"`
-	Version string `json:"version"`
+	Version [2]int `json:"version"`
 }
 
 func (d Dep) Key() string {
-	return d.Name + "@" + d.Version
+	    return fmt.Sprintf("%s@%d.%d", d.Name, d.Version[0], d.Version[1])
+	    
 }

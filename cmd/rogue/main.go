@@ -14,7 +14,7 @@ func main() {
 	deps := []store.Dep{
 		{
 			Name:    "react",
-			Version: "1.2",
+			Version: [2]int{1,4},
 		},
 	}
 
